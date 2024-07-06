@@ -1,12 +1,20 @@
 @font-face {
-    font-family: 'RightGroteskMedium';
-    src: url('./fonts/RightGrotesk-Medium.otf') format('opentype');
-  }
+  font-family: 'Bigilla';
+  src: url('./fonts/Bigilla.otf') format('opentype');
+  font-weight: normal;
+}
 
-$primary-color: rgba(255, 255, 255, 0.87);
-$secondary-color: #242424;
+@font-face {
+  font-family: 'Bigilla';
+  src: url('./fonts/Bigilla-Bold.otf') format('opentype'); /* Assurez-vous que le nom du fichier est correct */
+  font-weight: bold;
+}
 
-$font-family: 'RightGroteskMedium', sans-serif;
+$white: #FFF8E8;
+$black: #1A1A1A;
+$red: #B50B0C;
+
+$bigilla: 'Bigilla', sans-serif;
 $font-size-base: 16px;
 $line-height-base: 1.5;
 
