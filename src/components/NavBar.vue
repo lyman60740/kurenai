@@ -31,6 +31,7 @@ nav {
   text-transform: uppercase;
   padding: 0 40px;
   box-sizing: border-box;
+  z-index: 19;
 }
 .lvl_nav {
   display: flex;

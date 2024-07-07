@@ -7,7 +7,9 @@
     <FullScreen />
     <div class="main-container">
       <Culture />
+      <Discover />
     </div>
+    <Events />
   </main>
 </template>
 
@@ -19,6 +21,8 @@ import Header from "../sections/Header.vue";
 import Intro from "../sections/Intro.vue";
 import FullScreen from "../sections/FullScreen.vue";
 import Culture from "../sections/Culture.vue";
+import Discover from "../sections/Discover.vue";
+import Events from "../sections/Events.vue";
 
 export default {
   name: "Hero",
@@ -27,6 +31,8 @@ export default {
     Intro,
     FullScreen,
     Culture,
+    Discover,
+    Events,
   },
   data() {
     return {

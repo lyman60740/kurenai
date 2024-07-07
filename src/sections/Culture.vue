@@ -91,7 +91,7 @@ export default {
 .culture {
   display: grid;
   grid-template-columns: repeat(12, 1fr); /* 12 colonnes de largeur égale */
-  grid-template-rows: repeat(30, 1fr); /* 12 colonnes de largeur égale */
+  grid-template-rows: repeat(28, 1fr); /* 12 colonnes de largeur égale */
   gap: 24px; /* Espacement entre les colonnes */
   &__title {
     grid-column: 1 / span 12;
@@ -120,7 +120,7 @@ export default {
   &__img1 {
     grid-column: 2 / span 5;
     grid-row: 9 / span 7;
-    background-image: url("/src/assets/culture_img1.png");
+    background-image: url("/src/assets/header.webp");
   }
   & .discover {
     grid-column: 9 / span 2;
@@ -134,18 +134,18 @@ export default {
   &__img2 {
     grid-column: 9 / span 4;
     grid-row: 14 / span 4;
-    background-image: url("/src/assets/culture_img1.png");
+    background-image: url("/src/assets/header.webp");
   }
   &__img3 {
     grid-column: 4 / span 10;
     grid-row: 20 / span 6;
-    background-image: url("/src/assets/culture_img1.png");
+    background-image: url("/src/assets/header.webp");
     transform: translateX(30%);
   }
   &__img4 {
     grid-column: 2 / span 3;
     grid-row: 24 / span 4;
-    background-image: url("/src/assets/culture_img1.png");
+    background-image: url("/src/assets/header.webp");
   }
 }
 
@@ -168,7 +168,7 @@ export default {
   & .culture__img1 {
     grid-column: 7 / span 5;
     grid-row: 9 / span 7;
-    background-image: url("/src/assets/culture_img1.png");
+    background-image: url("/src/assets/header.webp");
   }
   & .discover {
     grid-column: 3 / span 2;
