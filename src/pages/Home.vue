@@ -1,15 +1,17 @@
 <template>
   <main>
     <Header />
-    <div class="main-container">
-      <Intro />
+    <div class="large-container">
+      <div class="main-container">
+        <Intro />
+      </div>
+      <FullScreen />
+      <div class="main-container">
+        <Culture />
+        <Discover />
+      </div>
+      <Events />
     </div>
-    <FullScreen />
-    <div class="main-container">
-      <Culture />
-      <Discover />
-    </div>
-    <Events />
   </main>
 </template>
 
@@ -48,6 +50,12 @@ export default {
 
 <style scoped lang="scss">
 @use "/src/styles/variables";
+.large-container {
+  width: 100%;
+  background: variables.$white;
+  position: relative;
+  z-index: 5;
+}
 .hero {
   width: 100%;
   height: 100%;

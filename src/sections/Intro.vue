@@ -19,8 +19,8 @@
       </a>
     </div>
 
-    <div class="intro__img1"></div>
-    <div class="intro__img2"></div>
+    <div class="intro__img1" data-speed="0.8"></div>
+    <div class="intro__img2" data-speed="1"></div>
 
     <div class="intro__adress">
       <div>
@@ -62,6 +62,7 @@ export default {
   grid-template-columns: repeat(12, 1fr); /* 12 colonnes de largeur égale */
   grid-template-rows: repeat(14, 1fr); /* 12 colonnes de largeur égale */
   gap: 24px; /* Espacement entre les colonnes */
+  background: variables.$white;
   &__content {
     grid-column: 7 / span 6;
     grid-row: 2 / span 4;
