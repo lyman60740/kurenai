@@ -151,16 +151,17 @@ export default {
           const direction = currentMouseX > this.prevMouseX ? 1 : -1;
 
           gsap.to(path, {
-            duration: 0.8,
-            xPercent: 80 * direction,
+            duration: 1,
+            x: 100 * direction,
             ease: "power3.out",
             autoAlpha: 0,
             onComplete: () => {
               gsap.to(path, {
-                duration: 0.8,
-                xPercent: 0,
-                ease: "power3.out",
+                duration: 1,
+                x: 0,
+                ease: "power1.in",
                 autoAlpha: 1,
+                overwrite: "auto",
               });
             },
           });
