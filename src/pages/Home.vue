@@ -17,7 +17,9 @@
 
 <script>
 import gsap from "gsap";
-import jsonData from "../data/data.json";
+import ScrollTrigger from "gsap/ScrollTrigger";
+
+gsap.registerPlugin(ScrollTrigger);
 
 import Header from "../sections/Header.vue";
 import Intro from "../sections/Intro.vue";
@@ -37,13 +39,25 @@ export default {
     Events,
   },
   data() {
-    return {
-      sectionData: jsonData.sections[0], // Prend la première section de votre JSON
-      contactInfo: jsonData.contactInfo,
-    };
+    return {};
   },
   mounted() {
-    // Ici, vous pouvez utiliser GSAP pour des animations si nécessaire
+    gsap.utils.toArray(".img-parallax").forEach((element) => {
+      gsap.to(element, {
+        backgroundPosition: "50% 50%",
+        ease: "none",
+        scrollTrigger: {
+          trigger: element,
+          start: "top bottom",
+          end: "bottom top",
+          scrub: true,
+          onUpdate: (self) => {
+            const progress = self.progress * 100;
+            element.style.backgroundPosition = `50% ${progress}%`;
+          },
+        },
+      });
+    });
   },
 };
 </script>

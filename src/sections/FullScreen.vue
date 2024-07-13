@@ -20,7 +20,7 @@ export default {
       scrollTrigger: {
         trigger: ".fullScreen",
         start: "top top",
-        end: "bottom top",
+        end: "bottom+=30vh top",
         scrub: true,
         pin: true,
         pinSpacing: false,
@@ -40,10 +40,11 @@ export default {
 
     gsap.to(".fullScreen", {
       scale: 0.8,
+      yPercent: -20,
       immediateRender: false,
       scrollTrigger: {
-        trigger: ".fullScreen",
-        start: "bottom top",
+        trigger: ".culture",
+        start: "top+=30vh bottom",
         endTrigger: ".culture",
         end: "top top",
         scrub: true,

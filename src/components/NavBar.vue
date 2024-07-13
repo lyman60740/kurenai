@@ -46,12 +46,14 @@ export default {
   },
   mounted() {
     gsap.fromTo(
-      ".lvl_nav",
+      ".lvl_nav, .lvl_nav svg path",
       {
         color: "#B50B0C",
+        fill: "#B50B0C",
       },
       {
         color: "#FFF8E8",
+        fill: "#FFF8E8",
         ease: "power1.inOut",
         // yPercent: -50,
         scrollTrigger: {
@@ -63,55 +65,26 @@ export default {
       }
     );
     gsap.fromTo(
-      ".lvl_nav svg path",
-      {
-        fill: "#B50B0C",
-      },
-      {
-        ease: "power1.inOut",
-        fill: "#FFF8E8",
-        scrollTrigger: {
-          trigger: ".fullScreen",
-          start: "top top",
-          end: "top+=90% top",
-          scrub: true,
-        },
-      }
-    );
-    gsap.fromTo(
-      ".lvl_nav",
+      ".lvl_nav, .lvl_nav svg path",
       {
         color: "#FFF8E8",
+        fill: "#FFF8E8",
       },
       {
         color: "#B50B0C",
+        fill: "#B50B0C",
         ease: "power1.inOut",
         // yPercent: -50,
         scrollTrigger: {
-          trigger: ".fullScreen",
-          start: "top+=90% top",
-          end: "bottom top",
-          scrub: true,
-        },
-      }
-    );
-    gsap.fromTo(
-      ".lvl_nav svg path",
-      {
-        fill: "#FFF8E8",
-      },
-      {
-        ease: "power1.inOut",
-        fill: "#B50B0C",
-        scrollTrigger: {
-          trigger: ".fullScreen",
-          start: "top+=90% top",
-          end: "bottom top",
+          trigger: ".culture",
+          start: "top-=50px top",
+          end: "top top",
           scrub: true,
         },
       }
     );
   },
+  methods: {},
 };
 </script>
 

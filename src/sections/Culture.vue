@@ -10,24 +10,35 @@
       paired with delightful small plates to enhance your experience. Allow our
       expertise to guide you through drinks that tell a story.
     </p>
-    <div class="grid-img-left culture__img1">
+    <div class="grid-img-left culture__img1 hoverCursorElement">
       <JapTitle text="カクテル" />
     </div>
-    <button class="discover">
+    <div class="discover-button">
       <span
         >Discover <br />
         bar</span
       >
-      <img src="/src/assets/arrow.svg" alt="arrow icon" />
-    </button>
-    <div class="grid-img-right culture__img2">
+      <svg
+        width="32"
+        height="16"
+        viewBox="0 0 32 16"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path
+          d="M0 8H32M32 8C27.5817 8 24 4.41828 24 0M32 8C27.5817 8 24 11.5817 24 16"
+          stroke="#B50B0C"
+        />
+      </svg>
+    </div>
+    <div class="grid-img-right culture__img2 hoverCursorElement">
       <JapTitle text="カクテル" />
     </div>
 
-    <div class="grid-img-right culture__img3">
+    <div class="grid-img-right culture__img3 hoverCursorElement">
       <JapTitle text="カクテル" />
     </div>
-    <div class="grid-img-left culture__img4">
+    <div class="grid-img-left culture__img4 hoverCursorElement">
       <JapTitle text="カクテル" />
     </div>
   </section>
@@ -46,21 +57,32 @@
     <div class="grid-img-right culture__img1">
       <JapTitle text="カクテル" />
     </div>
-    <button class="discover">
+    <div class="discover-button">
       <span
         >Discover <br />
         bar</span
       >
-      <img src="/src/assets/arrow.svg" alt="arrow icon" />
-    </button>
-    <div class="grid-img-left culture__img2">
+      <svg
+        width="32"
+        height="16"
+        viewBox="0 0 32 16"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path
+          d="M0 8H32M32 8C27.5817 8 24 4.41828 24 0M32 8C27.5817 8 24 11.5817 24 16"
+          stroke="#B50B0C"
+        />
+      </svg>
+    </div>
+    <div class="grid-img-left culture__img2 hoverCursorElement">
       <JapTitle text="カクテル" />
     </div>
 
-    <div class="grid-img-left culture__img3">
+    <div class="grid-img-left culture__img3 hoverCursorElement">
       <JapTitle text="カクテル" />
     </div>
-    <div class="grid-img-right culture__img4">
+    <div class="grid-img-right culture__img4 hoverCursorElement">
       <JapTitle text="カクテル" />
     </div>
   </section>
@@ -68,6 +90,8 @@
 
 <script>
 import gsap from "gsap";
+import ScrollTrigger from "gsap/ScrollTrigger";
+gsap.registerPlugin(ScrollTrigger);
 
 import JapTitle from "../components/JapTitle.vue";
 
@@ -77,10 +101,96 @@ export default {
     JapTitle,
   },
   data() {
-    return {};
+    return {
+      mouseX: 0,
+      mouseY: 0,
+    };
   },
   mounted() {
-    // Ici, vous pouvez utiliser GSAP pour des animations si nécessaire
+    gsap.to(".culture__title span", {
+      y: 0,
+      scrollTrigger: {
+        trigger: ".culture",
+        start: "top bottom",
+        end: "top+=30vh top",
+        scrub: true,
+      },
+    });
+
+    gsap.to(".culture__title span", {
+      color: "#B50B0C",
+      scrollTrigger: {
+        trigger: ".culture",
+        start: "top+=250 bottom",
+        end: "top+=400 bottom",
+        scrub: true,
+      },
+    });
+
+    document.querySelectorAll(".culture").forEach((element) => {
+      const discoverElement = element.querySelector(".discover-button");
+
+      element.addEventListener("mouseenter", (e) => {
+        this.mouseX = e.pageX;
+        this.mouseY = e.pageY;
+
+        gsap.set(discoverElement, {
+          y: this.mouseY + "px",
+          x: this.mouseX + "px",
+        });
+        gsap.to(discoverElement, {
+          opacity: 1,
+          duration: 0.3,
+          delay: 0.3,
+        });
+      });
+
+      element.addEventListener("mouseleave", (e) => {
+        gsap.to(discoverElement, {
+          opacity: 0,
+          duration: 0.3,
+        });
+      });
+
+      element.addEventListener("mousemove", (e) => {
+        this.mouseX = e.pageX;
+        this.mouseY = e.pageY;
+
+        gsap.to(discoverElement, {
+          y: this.mouseY + 90 + "px", // Décalage de 20px en bas
+          x: this.mouseX + 90 + "px", // Décalage de 20px à droite
+          ease: "none",
+        });
+      });
+    });
+
+    document.querySelectorAll(".hoverCursorElement").forEach((element) => {
+      element.addEventListener("mouseenter", (e) => {
+        gsap.to(".discover-button", {
+          border: "1px solid #FFF8E8",
+        });
+        gsap.to(".discover-button span", {
+          color: "#FFF8E8",
+        });
+        gsap.to(".discover-button svg path", {
+          fill: "#FFF8E8",
+          stroke: "#FFF8E8",
+        });
+      });
+
+      element.addEventListener("mouseleave", (e) => {
+        gsap.to(".discover-button", {
+          border: "1px solid #B50B0C",
+        });
+        gsap.to(".discover-button span", {
+          color: "#B50B0C",
+        });
+        gsap.to(".discover-button svg path", {
+          fill: "#B50B0C",
+          stroke: "#B50B0C",
+        });
+      });
+    });
   },
 };
 </script>
@@ -96,6 +206,7 @@ export default {
   max-width: 1600px;
   margin: 0 auto;
   box-sizing: border-box;
+  position: relative;
   &__title {
     grid-column: 1 / span 12;
     grid-row: 2 / span 4;
@@ -107,6 +218,8 @@ export default {
       font-weight: bold;
       color: variables.$red;
       align-self: flex-end;
+      transform: translateY(-40vh);
+      color: variables.$white;
     }
     & h1 {
       font-family: variables.$bigilla;
@@ -125,11 +238,14 @@ export default {
     grid-row: 9 / span 7;
     background-image: url("/src/assets/header.webp");
   }
-  & .discover {
-    grid-column: 9 / span 2;
-    grid-row: 11 / span 2;
+  & .discover-button {
     border: 1px solid variables.$red;
-    cursor: pointer;
+    position: fixed; /* Fixe par rapport au viewport */
+    pointer-events: none; /* S'assure que l'élément ne bloque pas les événements de la souris */
+    transform: translate(-50%, -50%);
+    top: 0;
+    left: 0;
+    opacity: 0;
     & span {
       color: variables.$red;
     }
@@ -151,7 +267,9 @@ export default {
     background-image: url("/src/assets/header.webp");
   }
 }
-
+.hoverCursorElement {
+  cursor: pointer;
+}
 .bis {
   & .culture__title {
     & span {
@@ -173,7 +291,7 @@ export default {
     grid-row: 9 / span 7;
     background-image: url("/src/assets/header.webp");
   }
-  & .discover {
+  & .discover-button {
     grid-column: 3 / span 2;
     grid-row: 11 / span 2;
   }

@@ -31,7 +31,7 @@
   box-sizing: border-box;
   
   }
-  button.discover {
+  .discover-button{
     height: 175px;
     width: 175px;
     border-radius: 50%;
@@ -40,6 +40,9 @@
     justify-content: center;
     flex-direction: column;
     gap: 16px;
+    will-change: transform;
+    transition: transform 0.1s ease;
+    z-index: 15;
     & span {
       font-size: 20px;
       font-weight: 300;

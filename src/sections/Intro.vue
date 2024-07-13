@@ -19,8 +19,8 @@
       </a>
     </div>
 
-    <div class="intro__img1" data-speed="0.8"></div>
-    <div class="intro__img2" data-speed="1"></div>
+    <div class="intro__img1 img-parallax" data-speed="0.8"></div>
+    <div class="intro__img2 img-parallax" data-speed="1"></div>
 
     <div class="intro__adress">
       <div>
@@ -92,15 +92,15 @@ export default {
   }
   &__img1 {
     background-image: url("/src/assets/intro_img1.webp");
-    background-size: cover;
-    background-position: left center;
+    background-size: 140%;
+    background-position: 50% 50%;
     grid-column: 1 / span 3;
     grid-row: 4 / span 4;
   }
   &__img2 {
     background-image: url("/src/assets/intro_img2.png");
-    background-size: cover;
-    background-position: left center;
+    background-size: 140%;
+    background-position: 50% 50%;
     grid-column: 8 / span 6;
     grid-row: 7 / span 6;
   }
