@@ -1,5 +1,6 @@
 <template>
   <section class="header">
+    <div class="header-bg"></div>
     <div class="header__content">
       <svg
         class="logo-title"
@@ -102,7 +103,7 @@ export default {
 
     gsap.to(".header", {
       ease: "power1.inOut",
-      scale: 0.8,
+      // scale: 0.8,
       scrollTrigger: {
         trigger: ".header",
         start: "top top",
@@ -112,6 +113,23 @@ export default {
         pinSpacing: false,
       },
     });
+    gsap.fromTo(
+      ".header-bg",
+      {
+        scale: 1,
+      },
+      {
+        ease: "power1.inOut",
+        scale: 0.8,
+        scrollTrigger: {
+          trigger: ".header-bg",
+          start: "top top",
+          end: "bottom top",
+          scrub: true,
+          toggleActions: "play none none reverse",
+        },
+      }
+    );
     gsap.to(".lvl_nav", {
       ease: "power1.inOut",
       color: "#B50B0C",
@@ -178,31 +196,47 @@ export default {
 
 <style scoped lang="scss">
 .header {
+  position: relative;
   width: 100%;
   height: 100svh;
   display: flex;
   justify-content: center;
   align-items: center;
+  overflow: hidden;
+}
+
+.header-bg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
   background-image: url("/src/assets/header.webp");
   background-size: cover;
   background-position: center;
-  &__content {
-    display: flex;
-    flex-direction: column;
-    gap: 81px;
-    transform: translateY(30%);
-    & p {
-      font-size: 20px;
-      font-weight: 300;
-      text-transform: uppercase;
-      color: #fff8e8;
-      line-height: 30px;
-      letter-spacing: 1px;
-      width: 300px;
-    }
-    & svg {
-      overflow: visible;
-    }
+  transform-origin: center center;
+  z-index: -1;
+}
+
+.header__content {
+  display: flex;
+  flex-direction: column;
+  gap: 81px;
+  transform: translateY(30%);
+  z-index: 1;
+
+  p {
+    font-size: 20px;
+    font-weight: 300;
+    text-transform: uppercase;
+    color: #fff8e8;
+    line-height: 30px;
+    letter-spacing: 1px;
+    width: 300px;
+  }
+
+  svg {
+    overflow: visible;
   }
 }
 </style>

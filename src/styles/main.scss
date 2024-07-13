@@ -23,11 +23,13 @@
     color: variables.$black;
     line-height: 30px;
   }
-  section {
+  section:not(.header, .fullScreen) { // Sauf les section qui prennent full largeur
     min-height: 100svh;
     width: 100%;
-    padding: 0 40px;
-    box-sizing: border-box;
+  max-width: 1600px;
+  margin: 0 auto;
+  box-sizing: border-box;
+  
   }
   button.discover {
     height: 175px;

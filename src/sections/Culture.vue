@@ -68,7 +68,6 @@
 
 <script>
 import gsap from "gsap";
-import jsonData from "../data/data.json";
 
 import JapTitle from "../components/JapTitle.vue";
 
@@ -93,6 +92,10 @@ export default {
   grid-template-columns: repeat(12, 1fr); /* 12 colonnes de largeur égale */
   grid-template-rows: repeat(28, 1fr); /* 12 colonnes de largeur égale */
   gap: 24px; /* Espacement entre les colonnes */
+  width: 100%;
+  max-width: 1600px;
+  margin: 0 auto;
+  box-sizing: border-box;
   &__title {
     grid-column: 1 / span 12;
     grid-row: 2 / span 4;

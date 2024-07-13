@@ -72,9 +72,7 @@ export default {
   }
 }
 .main-container {
-  width: 100%;
-  max-width: 1600px;
-  margin: 0 auto;
-  box-sizing: border-box;
+  background: variables.$white;
+  position: relative;
 }
 </style>

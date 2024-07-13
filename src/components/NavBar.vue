@@ -59,7 +59,6 @@ export default {
           start: "top top",
           end: "top+=90% top",
           scrub: true,
-          markers: true,
         },
       }
     );
@@ -109,7 +108,6 @@ export default {
           start: "top+=90% top",
           end: "bottom top",
           scrub: true,
-          markers: true,
         },
       }
     );
