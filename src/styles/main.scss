@@ -23,7 +23,7 @@
     color: variables.$black;
     line-height: 30px;
   }
-  section:not(.header, .fullScreen) { // Sauf les section qui prennent full largeur
+  section:not(.header, .fullScreen, .events) { // Sauf les section qui prennent full largeur
     min-height: 100svh;
     width: 100%;
   max-width: 1600px;

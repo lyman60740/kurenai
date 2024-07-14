@@ -10,7 +10,10 @@
       paired with delightful small plates to enhance your experience. Allow our
       expertise to guide you through drinks that tell a story.
     </p>
-    <div class="grid-img-left culture__img1 hoverCursorElement">
+    <div
+      data-speed="0.9"
+      class="grid-img-left culture__img1 hoverCursorElement img-parallax"
+    >
       <JapTitle text="カクテル" />
     </div>
     <div class="discover-button">
@@ -31,14 +34,23 @@
         />
       </svg>
     </div>
-    <div class="grid-img-right culture__img2 hoverCursorElement">
+    <div
+      data-speed="1.1"
+      class="grid-img-right culture__img2 hoverCursorElement img-parallax"
+    >
       <JapTitle text="カクテル" />
     </div>
 
-    <div class="grid-img-right culture__img3 hoverCursorElement">
+    <div
+      data-speed="0.9"
+      class="grid-img-right culture__img3 hoverCursorElement img-parallax"
+    >
       <JapTitle text="カクテル" />
     </div>
-    <div class="grid-img-left culture__img4 hoverCursorElement">
+    <div
+      data-speed="1.1"
+      class="grid-img-left culture__img4 hoverCursorElement img-parallax"
+    >
       <JapTitle text="カクテル" />
     </div>
   </section>
@@ -54,35 +66,26 @@
       paired with delightful small plates to enhance your experience. Allow our
       expertise to guide you through drinks that tell a story.
     </p>
-    <div class="grid-img-right culture__img1">
+    <div data-speed="0.9" class="grid-img-right culture__img1 img-parallax">
       <JapTitle text="カクテル" />
     </div>
-    <div class="discover-button">
-      <span
-        >Discover <br />
-        bar</span
-      >
-      <svg
-        width="32"
-        height="16"
-        viewBox="0 0 32 16"
-        fill="none"
-        xmlns="http://www.w3.org/2000/svg"
-      >
-        <path
-          d="M0 8H32M32 8C27.5817 8 24 4.41828 24 0M32 8C27.5817 8 24 11.5817 24 16"
-          stroke="#B50B0C"
-        />
-      </svg>
-    </div>
-    <div class="grid-img-left culture__img2 hoverCursorElement">
+    <div
+      data-speed="1.1"
+      class="grid-img-left culture__img2 hoverCursorElement img-parallax"
+    >
       <JapTitle text="カクテル" />
     </div>
 
-    <div class="grid-img-left culture__img3 hoverCursorElement">
+    <div
+      data-speed="1.1"
+      class="grid-img-left culture__img3 hoverCursorElement img-parallax"
+    >
       <JapTitle text="カクテル" />
     </div>
-    <div class="grid-img-right culture__img4 hoverCursorElement">
+    <div
+      data-speed="0.9"
+      class="grid-img-right culture__img4 hoverCursorElement img-parallax"
+    >
       <JapTitle text="カクテル" />
     </div>
   </section>
@@ -128,7 +131,7 @@ export default {
     });
 
     document.querySelectorAll(".culture").forEach((element) => {
-      const discoverElement = element.querySelector(".discover-button");
+      const discoverElement = document.querySelector(".discover-button");
 
       element.addEventListener("mouseenter", (e) => {
         this.mouseX = e.pageX;
@@ -137,18 +140,6 @@ export default {
         gsap.set(discoverElement, {
           y: this.mouseY + "px",
           x: this.mouseX + "px",
-        });
-        gsap.to(discoverElement, {
-          opacity: 1,
-          duration: 0.3,
-          delay: 0.3,
-        });
-      });
-
-      element.addEventListener("mouseleave", (e) => {
-        gsap.to(discoverElement, {
-          opacity: 0,
-          duration: 0.3,
         });
       });
 
@@ -166,9 +157,17 @@ export default {
 
     document.querySelectorAll(".hoverCursorElement").forEach((element) => {
       element.addEventListener("mouseenter", (e) => {
-        gsap.to(".discover-button", {
-          border: "1px solid #FFF8E8",
-        });
+        gsap.fromTo(
+          ".discover-button",
+          {
+            border: "1px solid #B50B0C",
+            autoAlpha: 0,
+          },
+          {
+            border: "1px solid #FFF8E8",
+            autoAlpha: 1,
+          }
+        );
         gsap.to(".discover-button span", {
           color: "#FFF8E8",
         });
@@ -179,9 +178,17 @@ export default {
       });
 
       element.addEventListener("mouseleave", (e) => {
-        gsap.to(".discover-button", {
-          border: "1px solid #B50B0C",
-        });
+        gsap.fromTo(
+          ".discover-button",
+          {
+            border: "1px solid #FFF8E8",
+            autoAlpha: 1,
+          },
+          {
+            border: "1px solid #B50B0C",
+            autoAlpha: 0,
+          }
+        );
         gsap.to(".discover-button span", {
           color: "#B50B0C",
         });
@@ -237,6 +244,8 @@ export default {
     grid-column: 2 / span 5;
     grid-row: 9 / span 7;
     background-image: url("/src/assets/header.webp");
+    background-size: 210%;
+    background-position: 50% 50%;
   }
   & .discover-button {
     border: 1px solid variables.$red;
@@ -254,17 +263,23 @@ export default {
     grid-column: 9 / span 4;
     grid-row: 14 / span 4;
     background-image: url("/src/assets/header.webp");
+    background-size: 160%;
+    background-position: 50% 50%;
   }
   &__img3 {
     grid-column: 4 / span 10;
     grid-row: 20 / span 6;
     background-image: url("/src/assets/header.webp");
     transform: translateX(30%);
+    background-size: 110%;
+    background-position: 50% 50%;
   }
   &__img4 {
     grid-column: 2 / span 3;
     grid-row: 24 / span 4;
     background-image: url("/src/assets/header.webp");
+    background-size: 230%;
+    background-position: 50% 50%;
   }
 }
 .hoverCursorElement {
@@ -290,6 +305,8 @@ export default {
     grid-column: 7 / span 5;
     grid-row: 9 / span 7;
     background-image: url("/src/assets/header.webp");
+    background-size: 190%;
+    background-position: 50% 50%;
   }
   & .discover-button {
     grid-column: 3 / span 2;
@@ -297,13 +314,19 @@ export default {
   }
   & .culture__img2 {
     grid-column: 2 / span 4;
+    background-size: 140%;
+    background-position: 50% 50%;
   }
   & .culture__img3 {
     grid-column: 1 / span 10;
     transform: translateX(-30%);
+    background-size: 100%;
+    background-position: 50% 50%;
   }
   & .culture__img4 {
     grid-column: 9 / span 4;
+    background-size: 140%;
+    background-position: 50% 50%;
   }
 }
 </style>

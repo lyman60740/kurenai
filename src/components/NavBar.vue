@@ -55,7 +55,6 @@ export default {
         color: "#FFF8E8",
         fill: "#FFF8E8",
         ease: "power1.inOut",
-        // yPercent: -50,
         scrollTrigger: {
           trigger: ".fullScreen",
           start: "top top",
@@ -74,7 +73,6 @@ export default {
         color: "#B50B0C",
         fill: "#B50B0C",
         ease: "power1.inOut",
-        // yPercent: -50,
         scrollTrigger: {
           trigger: ".culture",
           start: "top-=50px top",

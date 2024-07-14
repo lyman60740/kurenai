@@ -1,7 +1,7 @@
 <template>
   <section class="discover">
     <h2>
-      <span style="text-align: center">Disover our menus and</span>
+      <span style="text-align: center">Discover our menus and</span>
       <span style="text-align: left">indulge in an unforgettable</span>
       <span style="text-align: right">gastronomic experience,</span>
       <span style="text-align: left">combining culinary flavors</span>
@@ -11,6 +11,10 @@
 </template>
 
 <script>
+import gsap from "gsap";
+import ScrollTrigger from "gsap/ScrollTrigger";
+gsap.registerPlugin(ScrollTrigger);
+
 export default {
   name: "Discover",
   components: {},
@@ -18,7 +22,31 @@ export default {
     return {};
   },
   mounted() {
-    // Ici, vous pouvez utiliser GSAP pour des animations si nécessaire
+    const spans = this.$el.querySelectorAll("span");
+
+    const tl = gsap.timeline({
+      scrollTrigger: {
+        trigger: ".discover",
+        start: "center center",
+        end: "bottom top",
+        scrub: true,
+        pin: true,
+      },
+    });
+
+    spans.forEach((span, index) => {
+      const direction = index % 2 === 0 ? -100 : 100; // Alternates direction
+      tl.from(
+        span,
+        {
+          x: direction,
+          opacity: 0,
+          duration: 1,
+          ease: "power1.out",
+        },
+        `-=${0.5}`
+      );
+    });
   },
 };
 </script>

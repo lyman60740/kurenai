@@ -6,6 +6,12 @@
 </template>
 
 <script>
+import gsap from "gsap";
+import ScrollTrigger from "gsap/ScrollTrigger";
+import SplitText from "gsap/SplitText";
+
+gsap.registerPlugin(ScrollTrigger, SplitText);
+
 export default {
   name: "JapTitle",
   props: {
@@ -13,6 +19,23 @@ export default {
       type: String,
       required: true,
     },
+  },
+  mounted() {
+    const el = this.$el;
+    const split = new SplitText(el.querySelector("span"), { type: "chars" });
+
+    gsap.from(split.chars, {
+      opacity: 0,
+      xPercent: -100,
+      duration: 1,
+      stagger: 0.05,
+      ease: "power2.Out",
+      scrollTrigger: {
+        trigger: el,
+        start: "top 90%", // Démarre l'animation lorsque l'élément est à 80% du viewport
+        end: "top 20%", // Termine l'animation lorsque l'élément est à 20% du viewport
+      },
+    });
   },
 };
 </script>

@@ -36,7 +36,11 @@
     </div>
 
     <div class="footer__bottom">
-      <img src="/src/assets/logo_main.svg" alt="logo Kurenai" />
+      <img
+        class="kurenai_transi_end"
+        src="/src/assets/logo_main.svg"
+        alt="logo Kurenai"
+      />
       <div class="footer__bottom__credits">
         <span>© 2023 Kurenai</span>
         <span
@@ -51,6 +55,73 @@
   </footer>
 </template>
 
+<script>
+import gsap from "gsap";
+import ScrollTrigger from "gsap/ScrollTrigger";
+gsap.registerPlugin(ScrollTrigger);
+
+export default {
+  name: "Footer",
+  data() {
+    return {};
+  },
+  mounted() {
+    gsap.to(".kurenai_transi_end", {
+      y: 0,
+      ease: "none",
+      scrollTrigger: {
+        trigger: ".kurenai_transi_end",
+        start: "bottom+=120px bottom",
+        endTrigger: "html",
+        end: "bottom bottom",
+        scrub: true,
+      },
+    });
+
+    gsap.fromTo(
+      ".lvl_nav",
+      {
+        pointerEvents: "auto",
+      },
+      {
+        pointerEvents: "none",
+        scrollTrigger: {
+          trigger: ".footer",
+          start: "top-=50px top",
+          end: "top top",
+          scrub: true,
+        },
+      }
+    );
+
+    const tl = gsap.timeline({
+      scrollTrigger: {
+        trigger: ".footer",
+        start: "top-=150px top",
+        end: "bottom bottom",
+        toggleActions: "play none none reverse",
+      },
+    });
+    tl.from(".footer__top .footer__top__bloc", {
+      yPercent: -100,
+      autoAlpha: 0,
+      stagger: 0.2,
+      duration: 0.8,
+      ease: "power3.out",
+    }).from(
+      ".footer__bottom .footer__bottom__credits",
+      {
+        yPercent: 100,
+        autoAlpha: 0,
+        duration: 1,
+        ease: "power3.out",
+      },
+      "<75%"
+    );
+  },
+};
+</script>
+
 <style scoped lang="scss">
 @use "/src/styles/variables";
 .footer {
@@ -63,6 +134,9 @@
   flex-direction: column;
   padding: 40px;
   box-sizing: border-box;
+  position: relative;
+  z-index: 5;
+  overflow: hidden;
   &__top {
     display: flex;
     gap: 80px;
@@ -102,5 +176,8 @@
       }
     }
   }
+}
+.kurenai_transi_end {
+  transform: translateY(-100svh);
 }
 </style>
