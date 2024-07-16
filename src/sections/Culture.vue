@@ -148,9 +148,11 @@ export default {
         this.mouseY = e.pageY;
 
         gsap.to(discoverElement, {
-          y: this.mouseY + 90 + "px", // Décalage de 20px en bas
-          x: this.mouseX + 90 + "px", // Décalage de 20px à droite
-          ease: "none",
+          y: this.mouseY + 90 + "px",
+          x: this.mouseX + 90 + "px",
+          duration: 0.8,
+          ease: "power3.out",
+          overwrite: "auto",
         });
       });
     });
@@ -249,8 +251,8 @@ export default {
   }
   & .discover-button {
     border: 1px solid variables.$red;
-    position: fixed; /* Fixe par rapport au viewport */
-    pointer-events: none; /* S'assure que l'élément ne bloque pas les événements de la souris */
+    position: fixed;
+    pointer-events: none;
     transform: translate(-50%, -50%);
     top: 0;
     left: 0;

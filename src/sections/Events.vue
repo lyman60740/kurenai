@@ -200,13 +200,14 @@ export default {
       gsap.to(slideButton, {
         y: this.mouseY + 90 + "px",
         x: this.mouseX + 90 + "px",
-        ease: "none",
+        duration: 0.8,
+        ease: "power3.out",
       });
 
       gsap.to(slideButtonSvg, {
         rotate: rotation,
-        duration: 0.4,
-        ease: "none",
+        duration: 0.8,
+        ease: "power3.out",
       });
     };
 
@@ -355,7 +356,6 @@ export default {
   position: relative;
   // padding: 30vh 0 100svh 0;
   padding-top: 30vh;
-  position: relative;
   z-index: 1;
   &__wrapper {
     display: flex;

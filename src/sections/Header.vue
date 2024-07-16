@@ -151,7 +151,7 @@ export default {
       },
     });
 
-    this.hoverTitle();
+    // this.hoverTitle();
   },
   beforeDestroy() {
     document.removeEventListener("mousemove", this.updateMousePosition);

@@ -47,6 +47,93 @@ export default {
         `-=${0.5}`
       );
     });
+
+    const eventBox = document.querySelector(".discover h2");
+    const slideButton = document.querySelector(".ourmenu-button");
+
+    const throttle = (func, limit) => {
+      let lastFunc;
+      let lastRan;
+      return function () {
+        const context = this;
+        const args = arguments;
+        if (!lastRan) {
+          func.apply(context, args);
+          lastRan = Date.now();
+        } else {
+          clearTimeout(lastFunc);
+          lastFunc = setTimeout(function () {
+            if (Date.now() - lastRan >= limit) {
+              func.apply(context, args);
+              lastRan = Date.now();
+            }
+          }, limit - (Date.now() - lastRan));
+        }
+      };
+    };
+
+    const handleMouseMove = (e) => {
+      this.mouseX = e.clientX;
+      this.mouseY = e.clientY;
+
+      gsap.to(slideButton, {
+        y: this.mouseY + window.scrollY + 90 + "px",
+        x: this.mouseX + 90 + "px",
+        duration: 0.8,
+        ease: "power3.out",
+        overwrite: "auto",
+      });
+    };
+
+    const throttledMouseMove = throttle(handleMouseMove, 100);
+
+    eventBox.addEventListener("mousemove", throttledMouseMove);
+
+    eventBox.addEventListener("mouseenter", (e) => {
+      this.mouseX = e.clientX;
+      this.mouseY = e.clientY;
+
+      gsap.set(slideButton, {
+        y: this.mouseY + window.scrollY + "px",
+        x: this.mouseX + "px",
+      });
+
+      gsap.fromTo(
+        slideButton,
+        {
+          opacity: 0,
+        },
+        {
+          opacity: 1,
+          duration: 0.5, // Ajout de la durée pour l'animation d'entrée
+          ease: "power2.out",
+          overwrite: "auto",
+        }
+      );
+    });
+
+    eventBox.addEventListener("mouseleave", (e) => {
+      this.mouseX = e.clientX;
+      this.mouseY = e.clientY;
+
+      gsap.set(slideButton, {
+        y: this.mouseY + window.scrollY + "px",
+        x: this.mouseX + "px",
+      });
+
+      gsap.fromTo(
+        slideButton,
+        {
+          opacity: 1,
+        },
+        {
+          opacity: 0,
+          duration: 0.5, // Ajout de la durée pour l'animation de sortie
+          ease: "power2.out",
+          overwrite: "auto",
+        }
+      );
+    });
   },
 };
 </script>
@@ -58,6 +145,7 @@ export default {
   display: flex;
   justify-content: center;
   align-items: center;
+  position: relative;
   & h2 {
     display: flex;
     flex-direction: column;

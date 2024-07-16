@@ -47,8 +47,10 @@
           >Privacy policy / Terms & Conditions / Terms & conditions of use</span
         >
         <span>
-          <a href="">Design by <strong>Noémie Heuzé</strong></a>
-          <a href="">Dev by <strong>Lyman Abid</strong></a>
+          <a href="https://www.linkedin.com/in/noemieheuze/"
+            >Design by <u>Noémie Heuzé</u></a
+          >
+          <a href="https://lyman.fr/">Dev by <u>Lyman Abid</u></a>
         </span>
       </div>
     </div>
@@ -82,9 +84,11 @@ export default {
       ".lvl_nav",
       {
         pointerEvents: "auto",
+        autoAlpha: 1,
       },
       {
         pointerEvents: "none",
+        autoAlpha: 0,
         scrollTrigger: {
           trigger: ".footer",
           start: "top-=50px top",

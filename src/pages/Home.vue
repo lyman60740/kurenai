@@ -26,6 +26,24 @@
         />
       </svg>
     </div>
+    <div class="ourmenu-button">
+      <span
+        >OUR<br />
+        MENU</span
+      >
+      <svg
+        width="32"
+        height="16"
+        viewBox="0 0 32 16"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path
+          d="M0 8H32M32 8C27.5817 8 24 4.41828 24 0M32 8C27.5817 8 24 11.5817 24 16"
+          stroke="#B50B0C"
+        />
+      </svg>
+    </div>
   </main>
 </template>
 
@@ -76,7 +94,7 @@ export default {
 };
 </script>
 
-<style scoped lang="scss">
+<style lang="scss">
 @use "/src/styles/variables";
 .large-container {
   width: 100%;
@@ -119,7 +137,35 @@ export default {
   align-items: center;
   justify-content: center;
   will-change: transform;
-  transition: transform 0.1s ease-out;
+  // transition: transform 0.1s ease-out;
   z-index: 15;
+}
+.ourmenu-button {
+  height: 175px;
+  width: 175px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 16px;
+  will-change: transform;
+  position: fixed;
+  pointer-events: none;
+  transform: translate(-50%, -50%);
+  top: 0;
+  left: 0;
+  opacity: 0;
+  z-index: 15;
+  background: variables.$red;
+  & span {
+    font-size: 20px;
+    font-weight: 300;
+    text-transform: uppercase;
+    line-height: 30px;
+    text-align: center;
+    color: variables.$white;
+    transform: translateY(15%);
+  }
 }
 </style>
