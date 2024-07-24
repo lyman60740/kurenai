@@ -14,8 +14,17 @@
         every moment in an unforgettable setting.
       </p>
       <a href="#" class="intro__content__read-more">
+        <img
+          class="arrow-animate"
+          src="/src/assets/arrow.svg"
+          alt="arrow icon"
+        />
         <span>Read more</span>
-        <img src="/src/assets/arrow.svg" alt="arrow icon" />
+        <img
+          class="arrow-animate-out"
+          src="/src/assets/arrow.svg"
+          alt="arrow icon"
+        />
       </a>
     </div>
 
@@ -51,7 +60,64 @@ export default {
   data() {
     return {};
   },
-  mounted() {},
+  mounted() {
+    const readMore = document.querySelectorAll(".intro__content__read-more");
+
+    readMore.forEach((el) => {
+      const arrow = el.querySelector(".arrow-animate");
+      const arrowOut = el.querySelector(".arrow-animate-out");
+      const spans = el.querySelector("span");
+
+      el.addEventListener("mouseenter", () => {
+        const tl = gsap.timeline();
+        tl.to(arrowOut, {
+          duration: 0.3,
+          x: 50,
+          autoAlpha: 0,
+          ease: "power2.in",
+        })
+          .to(arrow, {
+            duration: 0.3,
+            x: 0,
+            autoAlpha: 1,
+            ease: "power2.Out",
+          })
+          .to(
+            spans,
+            {
+              duration: 0.3,
+              x: 50,
+              ease: "power2.Out",
+            },
+            "<"
+          );
+      });
+      el.addEventListener("mouseleave", () => {
+        const tl = gsap.timeline();
+        tl.to(arrow, {
+          duration: 0.3,
+          x: -50,
+          autoAlpha: 0,
+          overwrite: "auto",
+        })
+          .to(
+            spans,
+            {
+              duration: 0.3,
+              x: 0,
+              overwrite: "auto",
+            },
+            "<"
+          )
+          .to(arrowOut, {
+            duration: 0.3,
+            x: 0,
+            autoAlpha: 1,
+            overwrite: "auto",
+          });
+      });
+    });
+  },
 };
 </script>
 
@@ -81,6 +147,8 @@ export default {
       display: flex;
       gap: 24px;
       align-items: center;
+      position: relative;
+      overflow: hidden;
       & span {
         font-size: 20px;
         color: variables.$red;
@@ -125,5 +193,12 @@ export default {
       }
     }
   }
+}
+
+.arrow-animate {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  transform: translate(-50px, -50%);
 }
 </style>

@@ -1,5 +1,5 @@
 <template>
-  <section class="events">
+  <section class="events" data-section-id="section3">
     <div class="events__wrapper" ref="wrapper">
       <div class="events__bandeau" ref="bandeau1">
         <span v-for="n in 5" :key="'bandeau1-' + n">/ Our event</span>
@@ -160,100 +160,6 @@ export default {
     animateWrapper();
 
     // --------------- //
-
-    const eventBox = document.querySelector(".events__slider");
-    const slideButton = document.querySelector(".slideButton");
-    const slideButtonSvg = slideButton.querySelector("svg");
-
-    const throttle = (func, limit) => {
-      let lastFunc;
-      let lastRan;
-      return function () {
-        const context = this;
-        const args = arguments;
-        if (!lastRan) {
-          func.apply(context, args);
-          lastRan = Date.now();
-        } else {
-          clearTimeout(lastFunc);
-          lastFunc = setTimeout(function () {
-            if (Date.now() - lastRan >= limit) {
-              func.apply(context, args);
-              lastRan = Date.now();
-            }
-          }, limit - (Date.now() - lastRan));
-        }
-      };
-    };
-
-    const handleMouseMove = (e) => {
-      this.mouseX = e.pageX;
-      this.mouseY = e.pageY;
-
-      const boxWidth = eventBox.offsetWidth;
-      const boxLeft = eventBox.getBoundingClientRect().left;
-
-      // Déterminer la position du curseur par rapport à la largeur de event__slider
-      const cursorPosition = this.mouseX - boxLeft;
-      const rotation = cursorPosition < boxWidth / 2 ? -180 : 0;
-
-      gsap.to(slideButton, {
-        y: this.mouseY + 90 + "px",
-        x: this.mouseX + 90 + "px",
-        duration: 0.8,
-        ease: "power3.out",
-      });
-
-      gsap.to(slideButtonSvg, {
-        rotate: rotation,
-        duration: 0.8,
-        ease: "power3.out",
-      });
-    };
-
-    const throttledMouseMove = throttle(handleMouseMove, 100);
-
-    eventBox.addEventListener("mousemove", throttledMouseMove);
-
-    eventBox.addEventListener("mouseenter", (e) => {
-      this.mouseX = e.pageX;
-      this.mouseY = e.pageY;
-
-      gsap.set(slideButton, {
-        y: this.mouseY + "px",
-        x: this.mouseX + "px",
-      });
-
-      gsap.fromTo(
-        slideButton,
-        {
-          autoAlpha: 0,
-        },
-        {
-          autoAlpha: 1,
-        }
-      );
-    });
-
-    eventBox.addEventListener("mouseleave", (e) => {
-      this.mouseX = e.pageX;
-      this.mouseY = e.pageY;
-
-      gsap.set(slideButton, {
-        y: this.mouseY + "px",
-        x: this.mouseX + "px",
-      });
-
-      gsap.fromTo(
-        slideButton,
-        {
-          autoAlpha: 1,
-        },
-        {
-          autoAlpha: 0,
-        }
-      );
-    });
 
     document
       .querySelectorAll(".events__slider__item img")

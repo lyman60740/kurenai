@@ -1,5 +1,6 @@
 <template>
   <NavBar />
+  <CursorTracker />
   <div id="smooth-wrapper">
     <div id="smooth-content">
       <Home />
@@ -12,6 +13,7 @@
 import Home from "./pages/Home.vue";
 import NavBar from "./components/NavBar.vue";
 import Footer from "./components/Footer.vue";
+import CursorTracker from "./components/CursorTracker.vue";
 
 import gsap from "gsap";
 import ScrollTrigger from "gsap/ScrollTrigger";
@@ -29,6 +31,7 @@ export default {
     Home,
     NavBar,
     Footer,
+    CursorTracker,
   },
   data() {
     return {};

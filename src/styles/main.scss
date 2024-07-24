@@ -1,6 +1,25 @@
 @use 'variables';
 @import url('https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&display=swap');
+/* Personnaliser la largeur et l'arrière-plan de la scrollbar */
+::-webkit-scrollbar {
+  width: 6px; 
+}
 
+/* Personnaliser l'arrière-plan de la barre de défilement */
+::-webkit-scrollbar-track {
+  background: transparent; 
+}
+
+/* Personnaliser le pouce de la scrollbar */
+::-webkit-scrollbar-thumb {
+  background: variables.$red; 
+}
+
+/* Personnaliser le pouce de la scrollbar lors du survol */
+// ::-webkit-scrollbar-thumb:hover {
+//   background: variables.$white; /* Couleur du pouce lors du survol */
+//   border: 1px solid variables.$red;
+// }
   body {
     margin: 0;
     padding: 0;
@@ -41,7 +60,6 @@
     flex-direction: column;
     gap: 16px;
     will-change: transform;
-    // transition: transform 0.1s ease;
     z-index: 15;
     & span {
       font-size: 20px;

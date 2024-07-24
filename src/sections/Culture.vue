@@ -1,5 +1,5 @@
 <template>
-  <section class="culture">
+  <section class="culture" data-section-id="section1">
     <div class="culture__title">
       <span>Savor the art of</span>
       <h1>/ Japanese Cocktails</h1>
@@ -16,24 +16,7 @@
     >
       <JapTitle text="カクテル" />
     </div>
-    <div class="discover-button">
-      <span
-        >Discover <br />
-        bar</span
-      >
-      <svg
-        width="32"
-        height="16"
-        viewBox="0 0 32 16"
-        fill="none"
-        xmlns="http://www.w3.org/2000/svg"
-      >
-        <path
-          d="M0 8H32M32 8C27.5817 8 24 4.41828 24 0M32 8C27.5817 8 24 11.5817 24 16"
-          stroke="#B50B0C"
-        />
-      </svg>
-    </div>
+
     <div
       data-speed="1.1"
       class="grid-img-right culture__img2 hoverCursorElement img-parallax"
@@ -130,32 +113,32 @@ export default {
       },
     });
 
-    document.querySelectorAll(".culture").forEach((element) => {
-      const discoverElement = document.querySelector(".discover-button");
+    // document.querySelectorAll(".culture").forEach((element) => {
+    //   const discoverElement = document.querySelector(".discover-button");
 
-      element.addEventListener("mouseenter", (e) => {
-        this.mouseX = e.pageX;
-        this.mouseY = e.pageY;
+    //   element.addEventListener("mouseenter", (e) => {
+    //     this.mouseX = e.pageX;
+    //     this.mouseY = e.pageY;
 
-        gsap.set(discoverElement, {
-          y: this.mouseY + "px",
-          x: this.mouseX + "px",
-        });
-      });
+    //     gsap.set(discoverElement, {
+    //       y: this.mouseY + "px",
+    //       x: this.mouseX + "px",
+    //     });
+    //   });
 
-      element.addEventListener("mousemove", (e) => {
-        this.mouseX = e.pageX;
-        this.mouseY = e.pageY;
+    //   element.addEventListener("mousemove", (e) => {
+    //     this.mouseX = e.pageX;
+    //     this.mouseY = e.pageY;
 
-        gsap.to(discoverElement, {
-          y: this.mouseY + 90 + "px",
-          x: this.mouseX + 90 + "px",
-          duration: 0.8,
-          ease: "power3.out",
-          overwrite: "auto",
-        });
-      });
-    });
+    //     gsap.to(discoverElement, {
+    //       y: this.mouseY + 90 + "px",
+    //       x: this.mouseX + 90 + "px",
+    //       duration: 0.8,
+    //       ease: "power3.out",
+    //       overwrite: "auto",
+    //     });
+    //   });
+    // });
 
     document.querySelectorAll(".hoverCursorElement").forEach((element) => {
       element.addEventListener("mouseenter", (e) => {
@@ -248,18 +231,6 @@ export default {
     background-image: url("/src/assets/header.webp");
     background-size: 210%;
     background-position: 50% 50%;
-  }
-  & .discover-button {
-    border: 1px solid variables.$red;
-    position: fixed;
-    pointer-events: none;
-    transform: translate(-50%, -50%);
-    top: 0;
-    left: 0;
-    opacity: 0;
-    & span {
-      color: variables.$red;
-    }
   }
   &__img2 {
     grid-column: 9 / span 4;
