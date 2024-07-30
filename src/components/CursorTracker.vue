@@ -16,7 +16,7 @@
         >
           <path
             d="M0 8H32M32 8C27.5817 8 24 4.41828 24 0M32 8C27.5817 8 24 11.5817 24 16"
-            stroke="#B50B0C"
+            stroke="#464634"
           />
         </svg>
       </div>
@@ -35,7 +35,7 @@
         >
           <path
             d="M0 8H32M32 8C27.5817 8 24 4.41828 24 0M32 8C27.5817 8 24 11.5817 24 16"
-            stroke="#B50B0C"
+            stroke="#464634"
           />
         </svg>
       </div>
@@ -50,7 +50,7 @@
         >
           <path
             d="M0 8H32M32 8C27.5817 8 24 4.41828 24 0M32 8C27.5817 8 24 11.5817 24 16"
-            stroke="#B50B0C"
+            stroke="#464634"
           />
         </svg>
       </div>
@@ -77,7 +77,7 @@ export default {
   },
   methods: {
     initSlideLogic() {
-      const eventBox = document.querySelector(".events__slider");
+      const eventBox = document.querySelector(".events");
       if (!eventBox) {
         console.error("events__slider element not found");
         return;
@@ -126,13 +126,6 @@ export default {
         // Déterminer la position du curseur par rapport à la largeur de event__slider
         const cursorPosition = this.mouseX - boxLeft;
         const rotation = cursorPosition < boxWidth / 2 ? -180 : 0;
-
-        gsap.to(slideButton, {
-          y: this.mouseY + 90 + "px",
-          x: this.mouseX + 90 + "px",
-          duration: 0.8,
-          ease: "power3.out",
-        });
 
         gsap.to(slideButtonSvg, {
           rotate: rotation,
@@ -264,7 +257,6 @@ export default {
 .slideButton {
   border: 1px solid variables.$red;
   pointer-events: none; /* S'assure que l'élément ne bloque pas les événements de la souris */
-  opacity: 0;
   height: 175px;
   width: 175px;
   border-radius: 50%;
@@ -272,6 +264,7 @@ export default {
   align-items: center;
   justify-content: center;
   will-change: transform;
-  z-index: 15;
+  z-index: 1500;
+  opacity: 1;
 }
 </style>

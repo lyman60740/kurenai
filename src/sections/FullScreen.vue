@@ -1,6 +1,7 @@
 <template>
   <section class="fullScreen">
-    <img src="/src/assets/header.webp" alt="" />
+    <!-- <img src="/src/assets/intro_img1.png" alt="" /> -->
+    <div></div>
   </section>
 </template>
 
@@ -26,7 +27,7 @@ export default {
         pinSpacing: false,
       },
     });
-    gsap.to(".fullScreen img", {
+    gsap.to(".fullScreen div", {
       "--clip": "0% 0%",
       ease: "power1.inOut",
       // yPercent: -50,
@@ -38,18 +39,19 @@ export default {
       },
     });
 
-    gsap.to(".fullScreen", {
-      scale: 0.8,
-      yPercent: -20,
-      immediateRender: false,
-      scrollTrigger: {
-        trigger: ".culture",
-        start: "top+=30vh bottom",
-        endTrigger: ".culture",
-        end: "top top",
-        scrub: true,
-      },
-    });
+    // gsap.to(".fullScreen", {
+    //   scale: 0.8,
+    //   yPercent: -20,
+    //   immediateRender: false,
+    //   scrollTrigger: {
+    //     trigger: ".culture",
+    //     start: "top+=30% bottom",
+    //     endTrigger: ".culture",
+    //     end: "top top",
+    //     scrub: true,
+    //     markers: true,
+    //   },
+    // });
   },
 };
 </script>
@@ -59,10 +61,9 @@ export default {
   width: 100%;
   height: 200vh;
   position: relative;
-  & img {
+  & div {
     width: 100%;
     height: 50%;
-    object-fit: cover;
     --clip: 20% 40%;
     clip-path: inset(var(--clip));
     transition: clip-path 0.01s ease-in-out;
@@ -70,6 +71,9 @@ export default {
     top: 0;
     left: 50%;
     transform: translate(-50%, 0);
+    background-image: url("/src/assets/fullScreen.png");
+    background-position: center;
+    background-size: cover;
   }
 }
 </style>

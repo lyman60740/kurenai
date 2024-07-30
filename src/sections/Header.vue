@@ -132,7 +132,7 @@ export default {
     );
     gsap.to(".lvl_nav", {
       ease: "power1.inOut",
-      color: "#B50B0C",
+      color: "#464634",
       scrollTrigger: {
         trigger: ".intro",
         start: "top bottom",
@@ -142,7 +142,7 @@ export default {
     });
     gsap.to(".lvl_nav svg path", {
       ease: "power1.inOut",
-      fill: "#B50B0C",
+      fill: "#464634",
       scrollTrigger: {
         trigger: ".intro",
         start: "top bottom",
@@ -150,6 +150,38 @@ export default {
         scrub: true,
       },
     });
+    gsap.fromTo(
+      ".lvl_nav li div",
+      {
+        background: "#FFF8E8",
+      },
+      {
+        background: "#464634",
+        ease: "power1.inOut",
+        scrollTrigger: {
+          trigger: ".intro",
+          start: "top bottom",
+          end: "top+=30% bottom",
+          scrub: true,
+        },
+      }
+    );
+    gsap.fromTo(
+      ".lvl_nav li div",
+      {
+        background: "#FFF8E8",
+      },
+      {
+        background: "#464634",
+        ease: "power1.inOut",
+        scrollTrigger: {
+          trigger: ".intro",
+          start: "top bottom",
+          end: "top+=30% bottom",
+          scrub: true,
+        },
+      }
+    );
 
     // this.hoverTitle();
   },
@@ -211,7 +243,7 @@ export default {
   left: 0;
   width: 100%;
   height: 100%;
-  background-image: url("/src/assets/header.webp");
+  background-image: url("/src/assets/header.png");
   background-size: cover;
   background-position: center;
   transform-origin: center center;

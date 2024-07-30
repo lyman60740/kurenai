@@ -43,8 +43,11 @@ export default {
   },
   mounted() {
     gsap.utils.toArray(".img-parallax").forEach((element) => {
+      var speed = element.getAttribute("speed-parralax");
+      const backgroundPositionEl = window
+        .getComputedStyle(element)
+        .getPropertyValue("background-position-y");
       gsap.to(element, {
-        backgroundPosition: "50% 50%",
         ease: "none",
         scrollTrigger: {
           trigger: element,
@@ -52,8 +55,10 @@ export default {
           end: "bottom top",
           scrub: true,
           onUpdate: (self) => {
-            const progress = self.progress * 100;
-            element.style.backgroundPosition = `50% ${progress}%`;
+            const progress = self.progress * 100 * speed;
+            element.style.backgroundPositionY = `${
+              parseFloat(backgroundPositionEl) + progress
+            }%`;
           },
         },
       });

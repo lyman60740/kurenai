@@ -12,6 +12,7 @@
     </p>
     <div
       data-speed="0.9"
+      speed-parralax="0.7"
       class="grid-img-left culture__img1 hoverCursorElement img-parallax"
     >
       <JapTitle text="カクテル" />
@@ -19,6 +20,7 @@
 
     <div
       data-speed="1.1"
+      speed-parralax="1.5"
       class="grid-img-right culture__img2 hoverCursorElement img-parallax"
     >
       <JapTitle text="カクテル" />
@@ -26,12 +28,14 @@
 
     <div
       data-speed="0.9"
+      speed-parralax="0.4"
       class="grid-img-right culture__img3 hoverCursorElement img-parallax"
     >
       <JapTitle text="カクテル" />
     </div>
     <div
       data-speed="1.1"
+      speed-parralax="1"
       class="grid-img-left culture__img4 hoverCursorElement img-parallax"
     >
       <JapTitle text="カクテル" />
@@ -49,11 +53,16 @@
       paired with delightful small plates to enhance your experience. Allow our
       expertise to guide you through drinks that tell a story.
     </p>
-    <div data-speed="0.9" class="grid-img-right culture__img1 img-parallax">
+    <div
+      data-speed="0.9"
+      speed-parralax="0.8"
+      class="grid-img-right culture__img1 img-parallax"
+    >
       <JapTitle text="カクテル" />
     </div>
     <div
       data-speed="1.1"
+      speed-parralax="0.4"
       class="grid-img-left culture__img2 hoverCursorElement img-parallax"
     >
       <JapTitle text="カクテル" />
@@ -61,12 +70,14 @@
 
     <div
       data-speed="1.1"
+      speed-parralax="0.25"
       class="grid-img-left culture__img3 hoverCursorElement img-parallax"
     >
       <JapTitle text="カクテル" />
     </div>
     <div
       data-speed="0.9"
+      speed-parralax="0.4"
       class="grid-img-right culture__img4 hoverCursorElement img-parallax"
     >
       <JapTitle text="カクテル" />
@@ -98,13 +109,13 @@ export default {
       scrollTrigger: {
         trigger: ".culture",
         start: "top bottom",
-        end: "top+=30vh top",
+        end: "top+=200px top",
         scrub: true,
       },
     });
 
     gsap.to(".culture__title span", {
-      color: "#B50B0C",
+      color: "#464634",
       scrollTrigger: {
         trigger: ".culture",
         start: "top+=250 bottom",
@@ -145,7 +156,7 @@ export default {
         gsap.fromTo(
           ".discover-button",
           {
-            border: "1px solid #B50B0C",
+            border: "1px solid #464634",
             autoAlpha: 0,
           },
           {
@@ -170,16 +181,16 @@ export default {
             autoAlpha: 1,
           },
           {
-            border: "1px solid #B50B0C",
+            border: "1px solid #464634",
             autoAlpha: 0,
           }
         );
         gsap.to(".discover-button span", {
-          color: "#B50B0C",
+          color: "#464634",
         });
         gsap.to(".discover-button svg path", {
-          fill: "#B50B0C",
-          stroke: "#B50B0C",
+          fill: "#464634",
+          stroke: "#464634",
         });
       });
     });
@@ -228,31 +239,31 @@ export default {
   &__img1 {
     grid-column: 2 / span 5;
     grid-row: 9 / span 7;
-    background-image: url("/src/assets/header.webp");
-    background-size: 210%;
-    background-position: 50% 50%;
+    background-image: url("/src/assets/culture_img1-1.png");
+    background-size: cover;
+    background-position: 50% 30%;
   }
   &__img2 {
     grid-column: 9 / span 4;
     grid-row: 14 / span 4;
-    background-image: url("/src/assets/header.webp");
-    background-size: 160%;
+    background-image: url("/src/assets/culture_img2.png");
+    background-size: cover;
     background-position: 50% 50%;
   }
   &__img3 {
     grid-column: 4 / span 10;
     grid-row: 20 / span 6;
-    background-image: url("/src/assets/header.webp");
+    background-image: url("/src/assets/culture_img3.png");
     transform: translateX(30%);
-    background-size: 110%;
-    background-position: 50% 50%;
+    background-size: cover;
+    background-position: 50% 30%;
   }
   &__img4 {
     grid-column: 2 / span 3;
     grid-row: 24 / span 4;
-    background-image: url("/src/assets/header.webp");
-    background-size: 230%;
-    background-position: 50% 50%;
+    background-image: url("/src/assets/culture_img4.png");
+    background-size: cover;
+    background-position: 50% 10%;
   }
 }
 .hoverCursorElement {
@@ -277,9 +288,9 @@ export default {
   & .culture__img1 {
     grid-column: 7 / span 5;
     grid-row: 9 / span 7;
-    background-image: url("/src/assets/header.webp");
-    background-size: 190%;
-    background-position: 50% 50%;
+    background-image: url("/src/assets/culture_img5.png");
+    background-size: cover;
+    background-position: 50% 30%;
   }
   & .discover-button {
     grid-column: 3 / span 2;
@@ -287,19 +298,22 @@ export default {
   }
   & .culture__img2 {
     grid-column: 2 / span 4;
-    background-size: 140%;
-    background-position: 50% 50%;
+    background-size: cover;
+    background-position: 50% 30%;
+    background-image: url("/src/assets/culture_img6.png");
   }
   & .culture__img3 {
     grid-column: 1 / span 10;
     transform: translateX(-30%);
-    background-size: 100%;
-    background-position: 50% 50%;
+    background-size: cover;
+    background-position: 50% 30%;
+    background-image: url("/src/assets/culture_img7.png");
   }
   & .culture__img4 {
     grid-column: 9 / span 4;
-    background-size: 140%;
+    background-size: cover;
     background-position: 50% 50%;
+    background-image: url("/src/assets/culture_img8.png");
   }
 }
 </style>

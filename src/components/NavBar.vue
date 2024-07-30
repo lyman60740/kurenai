@@ -20,14 +20,32 @@
         </svg>
       </div>
       <ul class="nav-ancres">
-        <li><a href="#">Bar</a></li>
-        <li><a href="#">Kitchen</a></li>
-        <li><a href="#">Event</a></li>
-        <li><a href="#">Concept</a></li>
+        <li>
+          <a href="#">Bar</a>
+          <div></div>
+        </li>
+        <li>
+          <a href="#">Kitchen</a>
+          <div></div>
+        </li>
+        <li>
+          <a href="#">Event</a>
+          <div></div>
+        </li>
+        <li>
+          <a href="#">Concept</a>
+          <div></div>
+        </li>
       </ul>
       <ul class="nav-infos">
-        <li><a href="#">Menu</a></li>
-        <li><a href="#">Book</a></li>
+        <li>
+          <a href="#">Menu</a>
+          <div></div>
+        </li>
+        <li>
+          <a href="#">Book</a>
+          <div></div>
+        </li>
       </ul>
     </div>
   </nav>
@@ -48,8 +66,8 @@ export default {
     gsap.fromTo(
       ".lvl_nav, .lvl_nav svg path",
       {
-        color: "#B50B0C",
-        fill: "#B50B0C",
+        color: "#464634",
+        fill: "#464634",
       },
       {
         color: "#FFF8E8",
@@ -70,8 +88,8 @@ export default {
         fill: "#FFF8E8",
       },
       {
-        color: "#B50B0C",
-        fill: "#B50B0C",
+        color: "#464634",
+        fill: "#464634",
         ease: "power1.inOut",
         scrollTrigger: {
           trigger: ".culture",
@@ -81,12 +99,77 @@ export default {
         },
       }
     );
+    gsap.fromTo(
+      ".lvl_nav li div",
+      {
+        background: "#FFF8E8",
+      },
+      {
+        background: "#464634",
+        ease: "power1.inOut",
+        scrollTrigger: {
+          trigger: ".culture",
+          start: "top-=50px top",
+          end: "top top",
+          scrub: true,
+        },
+      }
+    );
+    gsap.fromTo(
+      ".lvl_nav li div",
+      {
+        background: "#FFF8E8",
+      },
+      {
+        background: "#464634",
+        ease: "power1.inOut",
+        scrollTrigger: {
+          trigger: ".fullScreen",
+          start: "top top",
+          end: "top+=90% top",
+          scrub: true,
+        },
+      }
+    );
+
+    document.querySelectorAll("nav li").forEach((el) => {
+      el.addEventListener("mouseenter", () => {
+        gsap.fromTo(
+          el.querySelector("div"),
+          {
+            scaleX: 0,
+          },
+          {
+            scaleX: 1,
+            duration: 0.3,
+            onComplete: () => {
+              gsap.set(el.querySelector("div"), {
+                transformOrigin: "right",
+              });
+            },
+          }
+        );
+      });
+      el.addEventListener("mouseleave", () => {
+        gsap.to(el.querySelector("div"), {
+          scaleX: 0,
+          duration: 0.3,
+          overwrite: "auto",
+          onComplete: () => {
+            gsap.set(el.querySelector("div"), {
+              transformOrigin: "left",
+            });
+          },
+        });
+      });
+    });
   },
   methods: {},
 };
 </script>
 
 <style scoped lang="scss">
+@use "/src/styles/variables";
 nav {
   width: 100%;
   position: fixed;
@@ -111,6 +194,19 @@ nav {
 }
 nav li {
   cursor: pointer;
+  position: relative;
+
+  & div {
+    position: absolute;
+    transform: scaleX(0);
+    bottom: 0px;
+    left: 0;
+    display: block;
+    width: 100%;
+    height: 1px;
+    background: variables.$red;
+    transform-origin: left;
+  }
 }
 .nav-ancres,
 .nav-infos {

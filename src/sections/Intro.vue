@@ -28,8 +28,16 @@
       </a>
     </div>
 
-    <div class="intro__img1 img-parallax" data-speed="0.8"></div>
-    <div class="intro__img2 img-parallax" data-speed="1"></div>
+    <div
+      class="intro__img1 img-parallax"
+      data-speed="0.8"
+      speed-parralax="1"
+    ></div>
+    <div
+      class="intro__img2 img-parallax"
+      data-speed="1"
+      speed-parralax="1"
+    ></div>
 
     <div class="intro__adress">
       <div>
@@ -159,16 +167,16 @@ export default {
     }
   }
   &__img1 {
-    background-image: url("/src/assets/intro_img1.webp");
+    background-image: url("/src/assets/intro_img1.png");
     background-size: 140%;
-    background-position: 50% 50%;
+    background-position: 50% 20%;
     grid-column: 1 / span 3;
     grid-row: 4 / span 4;
   }
   &__img2 {
     background-image: url("/src/assets/intro_img2.png");
     background-size: 140%;
-    background-position: 50% 50%;
+    background-position: 50% 10%;
     grid-column: 8 / span 6;
     grid-row: 7 / span 6;
   }
