@@ -70,4 +70,14 @@ export default {
     max-width: 1200px;
   }
 }
+@media screen and (max-width: 900px) {
+  .discover h2 {
+    font-size: 7.5vw;
+    justify-content: space-between;
+    height: 70%;
+  }
+  .events__bandeau span {
+    font-size: 15vw;
+  }
+}
 </style>

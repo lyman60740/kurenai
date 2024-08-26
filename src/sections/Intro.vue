@@ -209,4 +209,25 @@ export default {
   left: 0;
   transform: translate(-50px, -50%);
 }
+
+@media screen and (max-width: 1000px) {
+  .intro {
+    grid-template-columns: repeat(6, 1fr);
+    &__content {
+      grid-column: 1 / span 6;
+    }
+    &__img1 {
+      grid-column: 1 / span 4;
+      grid-row: 8 / span 3;
+    }
+    &__img2 {
+      grid-column: 2 / span 5;
+      grid-row: 12 / span 6;
+    }
+    &__adress {
+      grid-column: 1 / span 4;
+      grid-row: 22 / span 2;
+    }
+  }
+}
 </style>

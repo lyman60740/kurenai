@@ -93,5 +93,6 @@ export default {
 .main-container {
   background: variables.$white;
   position: relative;
+  padding: 0 45px;
 }
 </style>

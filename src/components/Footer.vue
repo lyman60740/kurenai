@@ -42,16 +42,21 @@
         alt="logo Kurenai"
       />
       <div class="footer__bottom__credits">
-        <span>© 2023 Kurenai</span>
-        <span
-          >Privacy policy / Terms & Conditions / Terms & conditions of use</span
-        >
-        <span>
-          <a href="https://www.linkedin.com/in/noemieheuze/"
-            >Design by <u>Noémie Heuzé</u></a
+        <span class="footer__bottom__credits__mark">© 2023 Kurenai</span>
+        <div class="footer__bottom__credits__legals">
+          <span
+            >Privacy policy / Terms & Conditions / Terms & conditions of
+            use</span
           >
-          <a href="https://lyman.fr/">Dev by <u>Lyman Abid</u></a>
-        </span>
+          <span class="footer__bottom__credits__mark">
+            <a target="_blank" href="https://www.linkedin.com/in/noemieheuze/"
+              >Design by <u>Noémie Heuzé</u></a
+            >
+            <a target="_blank" href="https://lyman.fr/"
+              >Dev by <u>Lyman Abid</u></a
+            >
+          </span>
+        </div>
       </div>
     </div>
   </footer>
@@ -143,6 +148,7 @@ export default {
   overflow: hidden;
   &__top {
     display: flex;
+    flex-wrap: wrap;
     gap: 80px;
     &__bloc {
       display: flex;
@@ -174,7 +180,7 @@ export default {
         color: variables.$white;
         // text-decoration: underline;
       }
-      & span:nth-child(3) {
+      &__legals {
         display: flex;
         gap: 20px;
       }
@@ -183,5 +189,19 @@ export default {
 }
 .kurenai_transi_end {
   transform: translateY(-100svh);
+}
+
+@media screen and (max-width: 1024px) {
+  .footer__bottom {
+    gap: 30px;
+    &__credits {
+      flex-direction: column;
+      gap: 80px;
+      &__legals {
+        width: 100%;
+        justify-content: space-between;
+      }
+    }
+  }
 }
 </style>

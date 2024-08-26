@@ -24,6 +24,37 @@
           </div>
         </div>
       </div>
+
+      <div class="events__slider__controllers">
+        <div class="events__slider__controllers__left">
+          <svg
+            width="48"
+            height="24"
+            viewBox="0 0 32 16"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M0 8H32M32 8C27.5817 8 24 4.41828 24 0M32 8C27.5817 8 24 11.5817 24 16"
+              stroke="#464634"
+            />
+          </svg>
+        </div>
+        <div class="events__slider__controllers__right">
+          <svg
+            width="48"
+            height="24"
+            viewBox="0 0 32 16"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M0 8H32M32 8C27.5817 8 24 4.41828 24 0M32 8C27.5817 8 24 11.5817 24 16"
+              stroke="#464634"
+            />
+          </svg>
+        </div>
+      </div>
     </div>
     <div class="kurenai-box">
       <svg
@@ -123,10 +154,12 @@ export default {
         },
       ],
       currentIndex: 0,
-      itemWidth: 560 + 163, // Largeur de l'élément + gap
     };
   },
   mounted() {
+    gsap.set(".events__slider__controllers__left", {
+      opacity: 0,
+    });
     gsap.to(".events", {
       scrollTrigger: {
         trigger: ".events",
@@ -161,41 +194,41 @@ export default {
 
     // --------------- //
 
-    document
-      .querySelectorAll(".events__slider__item img")
-      .forEach((element) => {
-        element.addEventListener("mouseenter", (e) => {
-          gsap.fromTo(
-            slideButton,
-            {
-              border: "1px solid #B50B0C",
-            },
-            {
-              border: "1px solid #FFF8E8",
-            }
-          );
-          gsap.to(".slideButton svg path", {
-            fill: "#FFF8E8",
-            stroke: "#FFF8E8",
-          });
-        });
+    // document
+    //   .querySelectorAll(".events__slider__item img")
+    //   .forEach((element) => {
+    //     element.addEventListener("mouseenter", (e) => {
+    //       gsap.fromTo(
+    //         slideButton,
+    //         {
+    //           border: "1px solid #B50B0C",
+    //         },
+    //         {
+    //           border: "1px solid #FFF8E8",
+    //         }
+    //       );
+    //       gsap.to(".slideButton svg path", {
+    //         fill: "#FFF8E8",
+    //         stroke: "#FFF8E8",
+    //       });
+    //     });
 
-        element.addEventListener("mouseleave", (e) => {
-          gsap.fromTo(
-            slideButton,
-            {
-              border: "1px solid #FFF8E8",
-            },
-            {
-              border: "1px solid #B50B0C",
-            }
-          );
-          gsap.to(".slideButton svg path", {
-            fill: "#B50B0C",
-            stroke: "#B50B0C",
-          });
-        });
-      });
+    //     element.addEventListener("mouseleave", (e) => {
+    //       gsap.fromTo(
+    //         slideButton,
+    //         {
+    //           border: "1px solid #FFF8E8",
+    //         },
+    //         {
+    //           border: "1px solid #B50B0C",
+    //         }
+    //       );
+    //       gsap.to(".slideButton svg path", {
+    //         fill: "#B50B0C",
+    //         stroke: "#B50B0C",
+    //       });
+    //     });
+    //   });
   },
   methods: {
     handleSliderClick(event) {
@@ -213,10 +246,23 @@ export default {
       const sliderWrapper = this.$refs.sliderWrapper;
       const firstItem = sliderWrapper.children[0];
       const rect = firstItem.getBoundingClientRect();
-
-      if (rect.left >= 50) {
+      const itemWidth = this.$refs.sliderWrapper.children[0].offsetWidth + 163;
+      gsap.to(".events__slider__controllers__right", {
+        opacity: 1,
+        duration: 0.3,
+        ease: "power2.inOut",
+      });
+      console.log(rect.left);
+      if (rect.left >= -itemWidth) {
+        gsap.to(".events__slider__controllers__left", {
+          opacity: 0,
+          duration: 0.3,
+          ease: "power2.inOut",
+        });
         console.log("Cannot slide left, already at the edge");
-        return;
+        setTimeout(() => {
+          return;
+        }, 1000);
       }
 
       this.currentIndex = Math.max(this.currentIndex - 1, 0);
@@ -228,8 +274,17 @@ export default {
         sliderWrapper.children[sliderWrapper.children.length - 1];
       const rect = lastItem.getBoundingClientRect();
       const viewportWidth = window.innerWidth;
-
+      gsap.to(".events__slider__controllers__left", {
+        opacity: 1,
+        duration: 0.3,
+        ease: "power2.inOut",
+      });
       if (rect.right <= viewportWidth - 50) {
+        gsap.to(".events__slider__controllers__right", {
+          opacity: 0,
+          duration: 0.3,
+          ease: "power2.inOut",
+        });
         console.log("Cannot slide right, already at the edge");
         return;
       }
@@ -241,9 +296,10 @@ export default {
       this.animateSlider();
     },
     animateSlider() {
+      const itemWidth = this.$refs.sliderWrapper.children[0].offsetWidth + 163;
       const sliderWrapper = this.$refs.sliderWrapper;
-      const targetX = -this.currentIndex * this.itemWidth;
-
+      const targetX = -this.currentIndex * itemWidth;
+      console.log(itemWidth);
       gsap.to(sliderWrapper, {
         x: targetX,
         duration: 1,
@@ -290,6 +346,17 @@ export default {
     cursor: pointer;
     padding: 0 40px;
     box-sizing: border-box;
+    &__controllers {
+      display: flex;
+      width: 100%;
+      justify-content: space-between;
+      &__left {
+        transform: rotate(180deg);
+      }
+      &__left {
+        justify-self: right;
+      }
+    }
     &__wrapper {
       display: flex;
       gap: 163px;
@@ -300,6 +367,7 @@ export default {
       flex-direction: column;
       gap: 24px;
       width: 560px;
+      max-width: 85vw;
       flex: none;
       & img {
         width: 100%;

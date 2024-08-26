@@ -271,4 +271,11 @@ export default {
     overflow: visible;
   }
 }
+
+@media screen and (max-width: 1000px) {
+  .logo-title {
+    width: 500px;
+    transition: width 0.5s;
+  }
+}
 </style>
